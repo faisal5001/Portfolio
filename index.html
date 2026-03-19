@@ -1,108 +1,246 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hafiz Faisal Sattar | Python Backend Engineer</title>
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Hafiz Faisal Sattar | Python Backend Engineer</title>
+
+<meta property="og:title" content="Hafiz Faisal Sattar | Python Backend Engineer">
+<meta property="og:description" content="FastAPI Backend Developer | Web Scraping | REST APIs | Production-ready systems">
+
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+:root{
+--bg:#0a0a0f;
+--accent:#00ff88;
+--accent2:#0088ff;
+--text:#e8e8f0;
+--muted:#666680;
+--card:#13131a;
+--border:#1e1e2e;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:'DM Mono';overflow-x:hidden}
+html{scroll-behavior:smooth}
+
+/* NAV */
+nav{
+position:fixed;top:0;width:100%;
+display:flex;justify-content:space-between;
+padding:20px 60px;
+background:rgba(10,10,15,0.9);
+border-bottom:1px solid var(--border);
+z-index:100;
+}
+.nav-logo{font-family:'Syne';color:var(--accent);font-weight:800}
+.nav-links a{margin-left:30px;color:var(--muted);text-decoration:none;font-size:0.8rem}
+.nav-links a:hover{color:var(--accent)}
+
+/* HERO */
+.hero{
+min-height:100vh;
+display:flex;
+align-items:center;
+padding:120px 60px;
+}
+h1{
+font-family:'Syne';
+font-size:clamp(3rem,7vw,6rem);
+font-weight:800;
+}
+.highlight{-webkit-text-stroke:2px var(--accent);color:transparent}
+.highlight2{
+background:linear-gradient(135deg,var(--accent),var(--accent2));
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+.hero-desc{color:var(--muted);max-width:600px;margin:20px 0}
+.btn{padding:12px 28px;border-radius:6px;text-decoration:none}
+.btn-primary{background:var(--accent);color:#000}
+.btn-secondary{border:1px solid var(--border);color:var(--text)}
+
+/* STATS */
+.stats{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:20px;
+padding:60px;
+border-top:1px solid var(--border);
+border-bottom:1px solid var(--border);
+}
+.stat{text-align:center}
+.stat h2{color:var(--accent);font-size:2rem}
+
+/* SECTION */
+section{padding:80px 60px}
+.section-title{font-family:'Syne';font-size:2.5rem;margin-bottom:30px}
+
+/* SKILLS */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}
+.card{
+background:var(--card);
+border:1px solid var(--border);
+padding:20px;
+border-radius:10px;
+transition:0.3s;
+}
+.card:hover{border-color:var(--accent);transform:translateY(-5px)}
+
+/* FILTER */
+.filters button{
+margin-right:10px;
+padding:6px 14px;
+border:1px solid var(--border);
+background:none;
+color:var(--muted);
+cursor:pointer;
+}
+.filters button.active,
+.filters button:hover{color:var(--accent);border-color:var(--accent)}
+
+/* FOOTER */
+footer{text-align:center;padding:40px;border-top:1px solid var(--border);color:var(--muted)}
+
+/* ANIMATION */
+.fade{opacity:0;transform:translateY(30px);transition:0.6s}
+.fade.show{opacity:1;transform:translateY(0)}
+
+@media(max-width:768px){
+nav{padding:20px}
+.hero{padding:100px 20px}
+section{padding:60px 20px}
+.stats{grid-template-columns:repeat(2,1fr)}
+}
+</style>
 </head>
 
 <body>
 
-  <!-- Hero Section -->
-  <header id="hero">
-    <div class="hero-content">
-      <div class="avatar"><i class="fas fa-user"></i></div>
-      <h1>Hafiz Faisal Sattar</h1>
-      <p>Python Backend Engineer | FastAPI & Data Scraping</p>
-      <p>Building production-ready APIs and scraping solutions | Explore my work below</p>
-    </div>
-  </header>
+<nav>
+<div class="nav-logo">faisal5001</div>
+<div class="nav-links">
+<a href="#about">About</a>
+<a href="#skills">Skills</a>
+<a href="#projects">Projects</a>
+<a href="#contact">Contact</a>
+</div>
+</nav>
 
-  <!-- About Section -->
-  <section id="about">
-    <h2>About Me</h2>
-    <p>
-      Python Backend Engineer with 1 year of experience building APIs using FastAPI
-      and developing data scraping solutions. Skilled in designing scalable, production-ready
-      backend systems and optimizing database operations.
-    </p>
-  </section>
+<section class="hero">
+<div>
+<h1>Python<br><span class="highlight">Backend</span><br><span class="highlight2">Engineer</span></h1>
 
-  <!-- Skills Section -->
-  <section id="skills">
-    <h2>Skills</h2>
-    <div class="skills">
-      <span><i class="fab fa-python"></i> Python</span>
-      <span><i class="fas fa-server"></i> FastAPI</span>
-      <span><i class="fas fa-database"></i> PostgreSQL</span>
-      <span><i class="fas fa-cogs"></i> SQLAlchemy</span>
-      <span><i class="fas fa-search"></i> Data Scraping</span>
-      <span><i class="fas fa-network-wired"></i> REST APIs</span>
-      <span><i class="fas fa-bolt"></i> Async Programming</span>
-    </div>
-  </section>
+<p class="hero-desc">
+I build scalable FastAPI backends, automation pipelines, and high-performance web scraping systems used in real-world production.
+</p>
 
-  <!-- Projects Section -->
-  <section id="projects">
-    <h2>Projects</h2>
-    <div class="project-grid">
+<a href="#projects" class="btn btn-primary">View Work</a>
+<a href="#contact" class="btn btn-secondary">Hire Me</a>
+</div>
+</section>
 
-      <div class="card">
-        <h3>Jobs Scraper & Recommendation System</h3>
-        <p>This Python project scrapes job listings from multiple websites using APIs, Playwright, and HTTP requests. It collects job details such as title, company, location, and description, then stores the data in a backend database for easy querying and analysis.</p>
-        <a href="https://github.com/faisal5001/jobs-recommendation-main.git" target="_blank"><i class="fab fa-github"></i> View Code</a>
-      </div>
+<!-- STATS -->
+<div class="stats">
+<div class="stat"><h2>1+</h2><p>Years Experience</p></div>
+<div class="stat"><h2>10+</h2><p>Projects</p></div>
+<div class="stat"><h2>100K+</h2><p>Data Rows Scraped</p></div>
+<div class="stat"><h2>FastAPI</h2><p>Main Tech</p></div>
+</div>
 
-      <div class="card">
-        <h3>Oregon Business Data Scraper</h3>
-        <p>Python project that scrapes business data from Oregon-based online directories, storing structured CSV files for research, analysis, and application development.</p>
-        <a href="https://github.com/faisal5001/Oregon_Scrape.git" target="_blank"><i class="fab fa-github"></i> View Code</a>
-      </div>
+<section id="about" class="fade">
+<h2 class="section-title">About Me</h2>
+<p style="color:var(--muted);max-width:700px">
+Python Backend Engineer specializing in FastAPI and data scraping. I design production-ready systems and efficient backend architectures.
+</p>
+</section>
 
-      <div class="card">
-        <h3>Schwarzag Business Data Scraper</h3>
-        <p>Python-based web scraper extracting data on Taxi, Hotel, Restaurant, and Doctor services from Schwarzag into structured CSV files for efficient analysis.</p>
-        <a href="https://github.com/faisal5001/Schwarzag.git" target="_blank"><i class="fab fa-github"></i> View Code</a>
-      </div>
+<section id="skills" class="fade">
+<h2 class="section-title">Skills</h2>
+<div class="grid">
+<div class="card">Python</div>
+<div class="card">FastAPI</div>
+<div class="card">PostgreSQL</div>
+<div class="card">SQLAlchemy</div>
+<div class="card">Web Scraping</div>
+<div class="card">REST APIs</div>
+</div>
+</section>
 
-      <div class="card">
-        <h3>Ptindirectory Scraper – Tax Preparer Data Extraction</h3>
-        <p>Python scraper extracting tax preparer information across multiple cities, saving structured CSV files for analysis. Handles large datasets and pagination efficiently.</p>
-        <a href="https://github.com/faisal5001/Ptindirectory.git" target="_blank"><i class="fab fa-github"></i> View Code</a>
-      </div>
+<section id="projects" class="fade">
+<h2 class="section-title">Projects</h2>
 
-    </div>
-  </section>
+<div class="filters">
+<button class="active" onclick="filter('all',this)">All</button>
+<button onclick="filter('scraper',this)">Scrapers</button>
+<button onclick="filter('api',this)">APIs</button>
+</div>
 
-  <!-- Experience Section -->
-  <section id="experience">
-    <h2>Experience</h2>
-    <p>
-      Python Backend Engineer with 1 year of experience building APIs using FastAPI
-      and developing data scraping solutions. Skilled in designing scalable, production-ready
-      backend systems and optimizing database operations.
-    </p>
-  </section>
+<div class="grid">
 
-  <!-- Contact Section -->
-  <section id="contact">
-    <h2>Contact</h2>
-    <p><i class="fab fa-github"></i> GitHub: <a href="https://github.com/faisal5001" target="_blank">Faisal5001</a></p>
-    <p><i class="fas fa-envelope"></i> Email: <a href="mailto:faisalsattar033@gmail.com">faisalsattar033@gmail.com</a></p>
-  </section>
+<div class="card project" data-type="scraper">
+<h3>Jobs Scraper</h3>
+<p>Scrapes job listings using Playwright & APIs.</p>
+<a href="https://github.com/faisal5001/jobs-recommendation-main.git">GitHub</a>
+</div>
 
-  <!-- Footer -->
-  <footer>
-    <p>© <span id="year"></span> Hafiz Faisal Sattar</p>
-    <script>
-      document.getElementById("year").textContent = new Date().getFullYear();
-    </script>
-  </footer>
+<div class="card project" data-type="scraper">
+<h3>Oregon Scraper</h3>
+<p>Extracts business data into CSV.</p>
+<a href="https://github.com/faisal5001/Oregon_Scrape.git">GitHub</a>
+</div>
+
+<div class="card project" data-type="scraper">
+<h3>Schwarzag Scraper</h3>
+<p>Taxi, hotel, doctor data extraction.</p>
+<a href="https://github.com/faisal5001/Schwarzag.git">GitHub</a>
+</div>
+
+<div class="card project" data-type="scraper">
+<h3>PTIN Scraper</h3>
+<p>Tax preparer dataset scraping.</p>
+<a href="https://github.com/faisal5001/Ptindirectory.git">GitHub</a>
+</div>
+
+</div>
+</section>
+
+<section id="contact" class="fade">
+<h2 class="section-title">Contact</h2>
+<p>Email: faisalsattar033@gmail.com</p>
+<p>GitHub: github.com/faisal5001</p>
+</section>
+
+<footer>
+<p>© 2026 Hafiz Faisal Sattar</p>
+</footer>
+
+<script>
+/* FILTER */
+function filter(type,btn){
+document.querySelectorAll('.filters button').forEach(b=>b.classList.remove('active'));
+btn.classList.add('active');
+
+document.querySelectorAll('.project').forEach(p=>{
+if(type==='all'||p.dataset.type===type){
+p.style.display='block';
+}else{
+p.style.display='none';
+}
+});
+}
+
+/* ANIMATION */
+const obs=new IntersectionObserver(entries=>{
+entries.forEach(e=>{
+if(e.isIntersecting){
+e.target.classList.add('show');
+}
+});
+});
+document.querySelectorAll('.fade').forEach(el=>obs.observe(el));
+</script>
 
 </body>
 </html>
