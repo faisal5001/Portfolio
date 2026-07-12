@@ -3,293 +3,595 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Hafiz Faisal Sattar | Python Backend Engineer</title>
-
+<title>Hafiz Faisal Sattar | Python Backend & AI Engineer</title>
 <meta property="og:title" content="Hafiz Faisal Sattar | Python Backend Engineer">
-<meta property="og:description" content="FastAPI Backend Developer | Web Scraping | REST APIs | Production-ready systems">
+<meta property="og:description" content="Python Backend & AI Engineer specializing in FastAPI, AI Chatbots, RAG, Ollama, PostgreSQL, Web Scraping and CRM Integrations.">
 
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
 
 <style>
 :root{
---bg:#0a0a0f;
---accent:#00ff88;
---accent2:#0088ff;
---text:#e8e8f0;
---muted:#666680;
---card:#13131a;
---border:#1e1e2e;
+  --bg:#0b0d10;
+  --panel:#12151a;
+  --panel-2:#161a20;
+  --border:#232830;
+  --text:#e7e9ec;
+  --muted:#7a8290;
+  --green:#3ddc84;
+  --green-dim:#1f5c3f;
+  --amber:#f5a623;
+  --blue:#5b9dff;
+  --red:#ff6b6b;
+  --radius:10px;
 }
+
 *{margin:0;padding:0;box-sizing:border-box}
-body{background:var(--bg);color:var(--text);font-family:'DM Mono';overflow-x:hidden}
 html{scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Inter',sans-serif;
+  font-size:16px;
+  line-height:1.65;
+}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  *{animation-duration:0.001ms !important; transition-duration:0.001ms !important;}
+}
 
-/* NAV */
+.mono{font-family:'JetBrains Mono',monospace}
+h1,h2,h3{font-family:'Space Grotesk',sans-serif; letter-spacing:-0.01em}
+
+a{color:inherit}
+:focus-visible{outline:2px solid var(--green); outline-offset:3px}
+
+.wrap{max-width:1080px; margin:0 auto; padding:0 32px}
+
+/* ---------- NAV ---------- */
 nav{
-position:fixed;top:0;width:100%;
-display:flex;justify-content:space-between;
-padding:20px 60px;
-background:rgba(10,10,15,0.9);
-border-bottom:1px solid var(--border);
-z-index:100;
+  position:fixed; top:0; left:0; right:0; z-index:100;
+  background:rgba(11,13,16,0.85);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--border);
 }
-.nav-logo{font-family:'Syne';color:var(--accent);font-weight:800}
-.nav-links a{margin-left:30px;color:var(--muted);text-decoration:none;font-size:0.8rem}
-.nav-links a:hover{color:var(--accent)}
+.nav-inner{
+  max-width:1080px; margin:0 auto; padding:0 32px;
+  display:flex; align-items:center; justify-content:space-between;
+  height:64px;
+}
+.nav-logo{font-family:'JetBrains Mono'; font-weight:600; color:var(--green); font-size:0.95rem}
+.nav-logo span{color:var(--muted)}
+.nav-links{display:flex; gap:6px}
+.nav-links a{
+  font-family:'JetBrains Mono'; font-size:0.8rem; color:var(--muted);
+  text-decoration:none; padding:8px 12px; border-radius:6px; transition:color .2s, background .2s;
+}
+.nav-links a:hover{color:var(--text); background:var(--panel-2)}
+.nav-links .method{color:var(--green); margin-right:4px}
+@media (max-width:700px){ .nav-links{display:none} }
 
-/* HERO */
+/* ---------- HERO ---------- */
 .hero{
-min-height:100vh;
-display:flex;
-align-items:center;
-padding:120px 60px;
+  padding:150px 0 90px;
+  display:grid; grid-template-columns:1fr; gap:56px; align-items:center;
 }
-h1{
-font-family:'Syne';
-font-size:clamp(3rem,7vw,6rem);
-font-weight:800;
+.eyebrow{
+  font-family:'JetBrains Mono'; font-size:0.78rem; color:var(--green);
+  display:flex; align-items:center; gap:10px; margin-bottom:22px;
 }
-.highlight{-webkit-text-stroke:2px var(--accent);color:transparent}
-.highlight2{
-background:linear-gradient(135deg,var(--accent),var(--accent2));
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
+.eyebrow::before{content:''; width:7px; height:7px; border-radius:50%; background:var(--green); box-shadow:0 0 0 4px var(--green-dim)}
+h1.headline{
+  font-size:clamp(2.4rem, 4.6vw, 3.4rem);
+  font-weight:700; line-height:1.08; margin-bottom:22px;
 }
-.hero-desc{color:var(--muted);max-width:600px;margin:20px 0}
-.btn{padding:12px 28px;border-radius:6px;text-decoration:none}
-.btn-primary{background:var(--accent);color:#000}
-.btn-secondary{border:1px solid var(--border);color:var(--text)}
+h1.headline .accent{color:var(--green)}
+.hero-desc{color:var(--muted); max-width:640px; margin-bottom:32px; font-size:1.02rem}
+.btn-row{display:flex; gap:14px; flex-wrap:wrap}
+.btn{
+  font-family:'JetBrains Mono'; font-size:0.85rem; font-weight:500;
+  padding:12px 22px; border-radius:8px; text-decoration:none; display:inline-flex; align-items:center; gap:8px;
+  transition:transform .15s, background .15s, border-color .15s;
+}
+.btn:hover{transform:translateY(-2px)}
+.btn-primary{background:var(--green); color:#08120c}
+.btn-primary:hover{background:#4ee493}
+.btn-secondary{border:1px solid var(--border); color:var(--text)}
+.btn-secondary:hover{border-color:var(--muted)}
 
-/* STATS */
+/* Terminal / API response panel */
+.terminal{
+  background:var(--panel); border:1px solid var(--border); border-radius:var(--radius);
+  overflow:hidden; box-shadow:0 20px 50px -20px rgba(0,0,0,0.6);
+}
+.terminal-bar{
+  display:flex; align-items:center; gap:8px;
+  padding:12px 16px; border-bottom:1px solid var(--border); background:var(--panel-2);
+}
+.dot{width:10px; height:10px; border-radius:50%}
+.dot.r{background:#ff5f57}.dot.y{background:#febc2e}.dot.g{background:#28c840}
+.terminal-title{margin-left:8px; font-family:'JetBrains Mono'; font-size:0.75rem; color:var(--muted)}
+.terminal-body{padding:20px 22px; font-family:'JetBrains Mono'; font-size:0.83rem}
+.term-line{color:var(--muted); margin-bottom:14px}
+.term-line .prompt{color:var(--green)}
+.json{color:#c9cdd3}
+.json .key{color:var(--blue)}
+.json .str{color:var(--amber)}
+.json .num{color:var(--green)}
+.json .punct{color:var(--muted)}
+.caret{display:inline-block; width:7px; height:15px; background:var(--green); margin-left:2px; animation:blink 1s steps(1) infinite; vertical-align:-2px}
+@keyframes blink{50%{opacity:0}}
+
+@media (max-width:860px){
+  .hero{grid-template-columns:1fr; padding-top:120px}
+}
+
+/* ---------- SECTION SHELL ---------- */
+section{padding:70px 0}
+.req-line{
+  display:flex; align-items:center; gap:12px; margin-bottom:36px;
+}
+.req-method{
+  font-family:'JetBrains Mono'; font-size:0.78rem; font-weight:700;
+  padding:5px 10px; border-radius:6px; letter-spacing:0.03em;
+}
+.req-method.get{color:var(--green); background:rgba(61,220,132,0.12)}
+.req-path{font-family:'JetBrains Mono'; font-size:1.1rem; color:var(--text)}
+.req-line::after{
+  content:''; flex:1; height:1px; background:var(--border);
+}
+.section-note{color:var(--muted); max-width:640px; margin-top:-16px; margin-bottom:36px}
+
+/* ---------- STATS (as response fields) ---------- */
 .stats{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:20px;
-padding:60px;
-border-top:1px solid var(--border);
-border-bottom:1px solid var(--border);
+  display:grid; grid-template-columns:repeat(5,1fr); gap:1px;
+  background:var(--border); border:1px solid var(--border); border-radius:var(--radius); overflow:hidden;
 }
-.stat{text-align:center}
-.stat h2{color:var(--accent);font-size:2rem}
+.stat{background:var(--panel); padding:26px 20px}
+.stat .k{font-family:'JetBrains Mono'; font-size:0.72rem; color:var(--muted); display:block; margin-bottom:8px}
+.stat .v{font-family:'Space Grotesk'; font-size:1.5rem; font-weight:700; color:var(--green)}
+@media (max-width:900px){ .stats{grid-template-columns:repeat(3,1fr)} }
+@media (max-width:560px){ .stats{grid-template-columns:repeat(2,1fr)} }
 
-/* SECTION */
-section{padding:80px 60px}
-.section-title{font-family:'Syne';font-size:2.5rem;margin-bottom:30px}
-
-/* SKILLS */
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}
-.card{
-background:var(--card);
-border:1px solid var(--border);
-padding:20px;
-border-radius:10px;
-transition:0.3s;
+/* ---------- SKILLS ---------- */
+.skill-groups{display:grid; grid-template-columns:repeat(2,1fr); gap:28px}
+@media (max-width:700px){ .skill-groups{grid-template-columns:1fr} }
+.skill-group-title{font-family:'JetBrains Mono'; font-size:0.75rem; color:var(--muted); margin-bottom:12px; text-transform:uppercase; letter-spacing:0.06em}
+.chip-row{display:flex; flex-wrap:wrap; gap:8px}
+.chip{
+  font-family:'JetBrains Mono'; font-size:0.8rem; color:var(--text);
+  border:1px solid var(--border); background:var(--panel); padding:8px 13px; border-radius:7px;
+  display:flex; align-items:center; gap:8px;
 }
-.card:hover{border-color:var(--accent);transform:translateY(-5px)}
+.chip .bullet{width:6px; height:6px; border-radius:50%}
 
-/* FILTER */
+/* ---------- TECH STACK (logo grid) ---------- */
+.techstack-grid{
+  display:grid; grid-template-columns:repeat(6,1fr); gap:14px;
+}
+@media (max-width:860px){ .techstack-grid{grid-template-columns:repeat(4,1fr)} }
+@media (max-width:560px){ .techstack-grid{grid-template-columns:repeat(3,1fr)} }
+.tech-item{
+  background:var(--panel); border:1px solid var(--border); border-radius:var(--radius);
+  padding:18px 10px; display:flex; flex-direction:column; align-items:center; gap:10px;
+  transition:transform .2s, border-color .2s;
+}
+.tech-item:hover{transform:translateY(-3px); border-color:var(--green)}
+.tech-item img{width:32px; height:32px; object-fit:contain}
+.tech-item span{font-family:'JetBrains Mono'; font-size:0.72rem; color:var(--muted); text-align:center}
+
+/* ---------- PROJECTS ---------- */
+.filters{display:flex; gap:8px; margin-bottom:28px; flex-wrap:wrap}
 .filters button{
-margin-right:10px;
-padding:6px 14px;
-border:1px solid var(--border);
-background:none;
-color:var(--muted);
-cursor:pointer;
+  font-family:'JetBrains Mono'; font-size:0.78rem;
+  padding:8px 16px; border-radius:7px; border:1px solid var(--border);
+  background:transparent; color:var(--muted); cursor:pointer; transition:.2s;
 }
-.filters button.active,
-.filters button:hover{color:var(--accent);border-color:var(--accent)}
+.filters button.active, .filters button:hover{color:var(--text); border-color:var(--green); background:rgba(61,220,132,0.08)}
 
-/* FOOTER */
-footer{text-align:center;padding:40px;border-top:1px solid var(--border);color:var(--muted)}
-
-/* ANIMATION */
-.fade{opacity:0;transform:translateY(30px);transition:0.6s}
-.fade.show{opacity:1;transform:translateY(0)}
-
-@media(max-width:768px){
-nav{padding:20px}
-.hero{padding:100px 20px}
-section{padding:60px 20px}
-.stats{grid-template-columns:repeat(2,1fr)}
+.grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(270px,1fr)); gap:18px}
+.card{
+  background:var(--panel); border:1px solid var(--border); border-radius:var(--radius);
+  padding:22px; transition:transform .2s, border-color .2s;
 }
+.card:hover{transform:translateY(-4px); border-color:#333a44}
+.card-top{display:flex; align-items:center; justify-content:space-between; margin-bottom:14px}
+.badge{
+  font-family:'JetBrains Mono'; font-size:0.68rem; font-weight:700; padding:4px 8px; border-radius:5px; letter-spacing:0.03em;
+}
+.badge.get{color:var(--green); background:rgba(61,220,132,0.12)}
+.badge.post{color:var(--blue); background:rgba(91,157,255,0.12)}
+.status{font-family:'JetBrains Mono'; font-size:0.68rem; color:var(--muted)}
+.status::before{content:'●'; color:var(--green); margin-right:5px; font-size:0.6rem}
+.card h3{font-size:1.05rem; margin-bottom:8px}
+.card .route{font-family:'JetBrains Mono'; font-size:0.72rem; color:var(--muted); margin-bottom:12px; word-break:break-all}
+.card p{color:var(--muted); font-size:0.9rem; margin-bottom:16px}
+.card .repo-link{
+  font-family:'JetBrains Mono'; font-size:0.78rem; color:var(--green); text-decoration:none;
+  display:inline-flex; align-items:center; gap:6px;
+}
+.card .repo-link:hover{text-decoration:underline}
+
+/* ---------- CONTACT ---------- */
+.contact-panel{
+  display:grid; grid-template-columns:1fr; gap:0;
+  background:var(--panel); border:1px solid var(--border); border-radius:var(--radius); overflow:hidden;
+}
+.contact-copy{padding:36px}
+.contact-copy p{color:var(--muted); margin-bottom:22px}
+.contact-links{display:flex; flex-direction:column; gap:14px}
+.contact-links a{
+  font-family:'JetBrains Mono'; font-size:0.9rem; text-decoration:none; color:var(--text);
+  display:flex; align-items:center; gap:10px;
+}
+.contact-links a:hover{color:var(--green)}
+.contact-links .lbl{color:var(--muted); width:64px; flex-shrink:0; font-size:0.75rem}
+.contact-body{
+  background:var(--panel-2); padding:36px; font-family:'JetBrains Mono'; font-size:0.82rem;
+  border-left:1px solid var(--border);
+}
+@media (max-width:700px){
+  .contact-panel{grid-template-columns:1fr}
+  .contact-body{border-left:none; border-top:1px solid var(--border)}
+}
+
+footer{border-top:1px solid var(--border); padding:36px 0; text-align:center; color:var(--muted); font-family:'JetBrains Mono'; font-size:0.78rem}
+footer .footer-name{color:var(--text); font-weight:600; margin-bottom:6px}
+footer .footer-role{color:var(--green); margin-bottom:2px}
+
+/* ---------- FADE ---------- */
+.fade{opacity:0; transform:translateY(20px); transition:opacity .6s ease, transform .6s ease}
+.fade.show{opacity:1; transform:translateY(0)}
 </style>
 </head>
 
 <body>
 
 <nav>
-<div class="nav-logo">faisal5001</div>
-<div class="nav-links">
-<a href="#about">About</a>
-<a href="#skills">Skills</a>
-<a href="#projects">Projects</a>
-<a href="#contact">Contact</a>
-</div>
+  <div class="nav-inner">
+    <div class="nav-logo">faisal<span>@</span>backend</div>
+    <div class="nav-links">
+      <a href="#about"><span class="method">GET</span>/about</a>
+      <a href="#skills"><span class="method">GET</span>/skills</a>
+      <a href="#stack"><span class="method">GET</span>/stack</a>
+      <a href="#projects"><span class="method">GET</span>/projects</a>
+      <a href="#contact"><span class="method">POST</span>/contact</a>
+    </div>
+  </div>
 </nav>
 
-<section class="hero">
-<div>
-<h1>Python<br><span class="highlight">Backend</span><br><span class="highlight2">Engineer</span></h1>
+<div class="wrap hero">
+  <div>
+    <div class="eyebrow">status: available for work</div>
+    <h1 class="headline">Python Backend &amp; AI engineer<br><span class="accent">building AI-powered</span> systems.</h1>
+    <p class="hero-desc">I design and build production-ready backend systems, AI-powered chatbots, Retrieval-Augmented Generation (RAG) applications, REST APIs, automation pipelines, CRM integrations, and high-performance web scraping platforms using Python, FastAPI, PostgreSQL, Ollama, OpenAI, Docker, and Next.js.</p>
+    <div class="btn-row">
+      <a href="#projects" class="btn btn-primary">View projects →</a>
+      <a href="/resume.pdf" class="btn btn-secondary" download>Download Resume</a>
+      <a href="https://github.com/faisal5001/Portfolio" class="btn btn-secondary" target="_blank" rel="noopener">GitHub</a>
+      <a href="#contact" class="btn btn-secondary">Hire Me</a>
+    </div>
+  </div>
 
-<p class="hero-desc">
-I build scalable FastAPI backends, automation pipelines, e-commerce APIs, and high-performance web scraping systems used in real-world production.
-</p>
-
-<a href="#projects" class="btn btn-primary">View Work</a>
-<a href="#contact" class="btn btn-secondary">Hire Me</a>
-</div>
-</section>
-
-<!-- STATS -->
-<div class="stats">
-<div class="stat"><h2>2+</h2><p>Years Experience</p></div>
-<div class="stat"><h2>10+</h2><p>Projects</p></div>
-<div class="stat"><h2>100K+</h2><p>Data Rows Scraped</p></div>
-<div class="stat"><h2>FastAPI</h2><p>Main Tech</p></div>
 </div>
 
+<div class="wrap">
+  <div class="stats fade">
+    <div class="stat"><span class="k">experience</span><span class="v">1+ yr</span></div>
+    <div class="stat"><span class="k">projects</span><span class="v">10+</span></div>
+    <div class="stat"><span class="k">rows scraped</span><span class="v">100K+</span></div>
+    <div class="stat"><span class="k">core stack</span><span class="v">FastAPI</span></div>
+    <div class="stat"><span class="k">specialization</span><span class="v">AI + Backend</span></div>
+  </div>
+</div>
+
+<div class="wrap">
 <section id="about" class="fade">
-<h2 class="section-title">About Me</h2>
-<p style="color:var(--muted);max-width:700px">
-Python Backend Engineer specializing in FastAPI, e-commerce APIs, and data scraping. I design production-ready systems, REST APIs, shopping carts, and order management solutions.
-</p>
+  <div class="req-line">
+    <span class="req-method get">GET</span>
+    <span class="req-path">/about</span>
+  </div>
+  <p class="section-note" style="color:var(--text); max-width:700px">
+I'm a Python Backend & AI Engineer specializing in FastAPI, AI-powered applications, Retrieval-Augmented Generation (RAG), LLM integrations, and scalable backend systems. I build production-ready REST APIs, intelligent chatbots, automation platforms, CRM integrations (HubSpot & Odoo), and high-performance web scraping pipelines using Python, PostgreSQL, Docker, OpenAI, and Ollama.
+  </p>
 </section>
+</div>
 
+<div class="wrap">
 <section id="skills" class="fade">
-<h2 class="section-title">Skills</h2>
-<div class="grid">
-<div class="card">Python</div>
-<div class="card">FastAPI</div>
-<div class="card">PostgreSQL</div>
-<div class="card">SQLAlchemy</div>
-<div class="card">Web Scraping</div>
-<div class="card">REST APIs</div>
-<div class="card">E-commerce Systems</div>
-<div class="card">Shopping Cart</div>
-<div class="card">Order Management</div>
-<div class="card">Stripe / PayPal</div>
-</div>
+  <div class="req-line">
+    <span class="req-method get">GET</span>
+    <span class="req-path">/skills</span>
+  </div>
+  <div class="skill-groups">
+    <div>
+      <div class="skill-group-title">AI &amp; LLM</div>
+      <div class="chip-row">
+        <span class="chip"><span class="bullet" style="background:#c98bff"></span>Ollama / Local LLMs</span>
+        <span class="chip"><span class="bullet" style="background:#c98bff"></span>RAG Pipelines</span>
+        <span class="chip"><span class="bullet" style="background:#c98bff"></span>ChromaDB</span>
+        <span class="chip"><span class="bullet" style="background:#c98bff"></span>Prompt Engineering</span>
+      </div>
+    </div>
+    <div>
+      <div class="skill-group-title">Core</div>
+      <div class="chip-row">
+        <span class="chip"><span class="bullet" style="background:var(--green)"></span>Python</span>
+        <span class="chip"><span class="bullet" style="background:var(--green)"></span>FastAPI</span>
+        <span class="chip"><span class="bullet" style="background:var(--green)"></span>REST APIs</span>
+        <span class="chip"><span class="bullet" style="background:var(--green)"></span>Next.js</span>
+      </div>
+    </div>
+    <div>
+      <div class="skill-group-title">Data</div>
+      <div class="chip-row">
+        <span class="chip"><span class="bullet" style="background:var(--blue)"></span>PostgreSQL</span>
+        <span class="chip"><span class="bullet" style="background:var(--blue)"></span>SQLAlchemy</span>
+        <span class="chip"><span class="bullet" style="background:var(--blue)"></span>Web Scraping</span>
+      </div>
+    </div>
+    <div>
+      <div class="skill-group-title">Commerce &amp; CRM</div>
+      <div class="chip-row">
+        <span class="chip"><span class="bullet" style="background:var(--amber)"></span>Shopping Cart</span>
+        <span class="chip"><span class="bullet" style="background:var(--amber)"></span>Order Management</span>
+        <span class="chip"><span class="bullet" style="background:var(--amber)"></span>Stripe / PayPal</span>
+        <span class="chip"><span class="bullet" style="background:var(--amber)"></span>Odoo CRM</span>
+      </div>
+    </div>
+    <div>
+      <div class="skill-group-title">Systems</div>
+      <div class="chip-row">
+        <span class="chip"><span class="bullet" style="background:#c98bff"></span>E-commerce Systems</span>
+        <span class="chip"><span class="bullet" style="background:#c98bff"></span>Production Deploys</span>
+      </div>
+    </div>
+  </div>
 </section>
+</div>
 
+<div class="wrap">
+<section id="stack" class="fade">
+  <div class="req-line">
+    <span class="req-method get">GET</span>
+    <span class="req-path">/stack</span>
+  </div>
+  <div class="skill-groups" style="grid-template-columns:repeat(3,1fr)">
+    <div>
+      <div class="skill-group-title">AI</div>
+      <div class="chip-row">
+        <span class="chip mono">Ollama</span>
+        <span class="chip mono">RAG</span>
+        <span class="chip mono">ChromaDB</span>
+        <span class="chip mono">Sentence-Transformers</span>
+      </div>
+    </div>
+    <div>
+      <div class="skill-group-title">Backend</div>
+      <div class="chip-row">
+        <span class="chip mono">Python</span>
+        <span class="chip mono">FastAPI</span>
+        <span class="chip mono">Next.js</span>
+      </div>
+    </div>
+    <div>
+      <div class="skill-group-title">Database</div>
+      <div class="chip-row">
+        <span class="chip mono">PostgreSQL</span>
+        <span class="chip mono">SQLAlchemy</span>
+      </div>
+    </div>
+    <div>
+      <div class="skill-group-title">CRM &amp; Integrations</div>
+      <div class="chip-row">
+        <span class="chip mono">Odoo CRM</span>
+        <span class="chip mono">Stripe / PayPal</span>
+      </div>
+    </div>
+    <div>
+      <div class="skill-group-title">Automation</div>
+      <div class="chip-row">
+        <span class="chip mono">Web Scraping</span>
+        <span class="chip mono">Scheduled Pipelines</span>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
+
+<div class="wrap">
+<section id="techstack" class="fade">
+  <div class="req-line">
+    <span class="req-method get">GET</span>
+    <span class="req-path">/tech-stack</span>
+  </div>
+  <div class="techstack-grid">
+    <div class="tech-item"><img src="https://cdn.simpleicons.org/python/3ddc84" alt="Python"><span>Python</span></div>
+    <div class="tech-item"><img src="https://cdn.simpleicons.org/fastapi/3ddc84" alt="FastAPI"><span>FastAPI</span></div>
+    <div class="tech-item"><img src="https://cdn.simpleicons.org/postgresql/5b9dff" alt="PostgreSQL"><span>PostgreSQL</span></div>
+    <div class="tech-item"><img src="https://cdn.simpleicons.org/sqlalchemy/e7e9ec" alt="SQLAlchemy"><span>SQLAlchemy</span></div>
+    <div class="tech-item"><img src="https://cdn.simpleicons.org/docker/5b9dff" alt="Docker"><span>Docker</span></div>
+    <div class="tech-item"><img src="https://cdn.simpleicons.org/nextdotjs/e7e9ec" alt="Next.js"><span>Next.js</span></div>
+    <div class="tech-item"><img src="https://cdn.simpleicons.org/openai/e7e9ec" alt="OpenAI"><span>OpenAI</span></div>
+    <div class="tech-item"><img src="https://cdn.simpleicons.org/ollama/e7e9ec" alt="Ollama"><span>Ollama</span></div>
+    <div class="tech-item"><img src="https://cdn.simpleicons.org/langchain/3ddc84" alt="RAG"><span>RAG</span></div>
+    <div class="tech-item"><img src="https://cdn.simpleicons.org/git/f5a623" alt="Git"><span>Git</span></div>
+    <div class="tech-item"><img src="https://cdn.simpleicons.org/github/e7e9ec" alt="GitHub"><span>GitHub</span></div>
+    <div class="tech-item"><img src="https://cdn.simpleicons.org/linux/e7e9ec" alt="Linux"><span>Linux</span></div>
+    <div class="tech-item"><img src="https://cdn.simpleicons.org/stripe/5b9dff" alt="Stripe"><span>Stripe</span></div>
+    <div class="tech-item"><img src="https://cdn.simpleicons.org/hubspot/f5a623" alt="HubSpot"><span>HubSpot</span></div>
+    <div class="tech-item"><img src="https://cdn.simpleicons.org/odoo/c98bff" alt="Odoo"><span>Odoo</span></div>
+    <div class="tech-item"><img src="https://cdn.simpleicons.org/playwright/3ddc84" alt="Playwright"><span>Playwright</span></div>
+    <div class="tech-item"><img src="https://cdn.simpleicons.org/selenium/3ddc84" alt="Selenium"><span>Selenium</span></div>
+  </div>
+</section>
+</div>
+
+<div class="wrap">
 <section id="projects" class="fade">
-<h2 class="section-title">Projects</h2>
+  <div class="req-line">
+    <span class="req-method get">GET</span>
+    <span class="req-path">/projects</span>
+  </div>
 
-<div class="filters">
-<button class="active" onclick="filter('all',this)">All</button>
-<button onclick="filter('ecommerce',this)">E-commerce</button>
-<button onclick="filter('scraper',this)">Scrapers</button>
-<button onclick="filter('api',this)">APIs</button>
-</div>
+  <div class="filters">
+    <button class="active" onclick="filterProjects('all',this)">all</button>
+    <button onclick="filterProjects('ai',this)">ai</button>
+    <button onclick="filterProjects('ecommerce',this)">e-commerce</button>
+    <button onclick="filterProjects('scraper',this)">scrapers</button>
+    <button onclick="filterProjects('api',this)">apis</button>
+  </div>
 
-<div class="grid">
+  <div class="grid">
 
-<!-- E-commerce / API Project -->
-<div class="card project" data-type="api">
-<h3>FastAPI E-commerce API</h3>
-<p>Backend API for an e-commerce platform with product management, cart, checkout, and payment integration.</p>
-<a href="https://github.com/faisal5001/fastapi-ecommerce" target="_blank">GitHub</a>
-</div>
+    <div class="card project featured" data-type="api ai" style="grid-column:1 / -1; border-color:var(--green); background:linear-gradient(180deg, rgba(61,220,132,0.06), var(--panel))">
+      <div class="card-top">
+        <span class="badge get" style="background:rgba(61,220,132,0.18)">★ FEATURED</span>
+        <span class="status">200 OK</span>
+      </div>
+      <h3>AI Chatbot Platform</h3>
+      <div class="route">/api/v1/chat · /conversations · /leads — Next.js + FastAPI</div>
+      <p>An AI-powered chatbot platform with a retrieval-augmented (RAG) pipeline over a custom knowledge base,
+      served by a local LLM through Ollama. Handles multi-turn conversations, lead capture, and pushes
+      qualified leads straight into Odoo CRM.</p>
+      <div class="chip-row" style="margin-bottom:16px">
+        <span class="chip mono">FastAPI</span>
+        <span class="chip mono">Next.js</span>
+        <span class="chip mono">RAG</span>
+        <span class="chip mono">Ollama</span>
+        <span class="chip mono">PostgreSQL</span>
+        <span class="chip mono">Odoo CRM</span>
+        <span class="chip mono">Conversation History</span>
+        <span class="chip mono">Lead Capture</span>
+        <span class="chip mono">REST API</span>
+        <span class="chip mono">Docker</span>
+      </div>
+      <a class="repo-link" href="https://github.com/faisal5001/Portfolio" target="_blank" rel="noopener">↳ View GitHub Repository</a>
+    </div>
 
-<!-- JobAgent Scraper -->
-<div class="card project" data-type="scraper">
-<h3>JobAgent Scraper</h3>
-<p>Scrapes job listings from JobAgent with title, company, location, and date.</p>
-<a href="https://github.com/faisal5001/job-scraper-jobagent.git" target="_blank">GitHub</a>
-</div>
+    <div class="card project" data-type="api ecommerce">
+      <div class="card-top"><span class="badge post">POST /checkout</span><span class="status">200 OK</span></div>
+      <h3>FastAPI E-commerce API</h3>
+      <div class="route">/api/v1/products · /cart · /checkout</div>
+      <p>Backend API for an e-commerce platform: product management, cart, checkout, and payment integration.</p>
+      <a class="repo-link" href="https://github.com/faisal5001/fastapi-ecommerce" target="_blank" rel="noopener">↳ View GitHub Repository</a>
+    </div>
 
-<!-- JobScout24 Scraper -->
-<div class="card project" data-type="scraper">
-<h3>JobScout24 Scraper</h3>
-<p>Scrapes job listings from JobScout24 with structured output for analysis.</p>
-<a href="https://github.com/faisal5001/job-scraper-jobscout24.git" target="_blank">GitHub</a>
-</div>
+    <div class="card project" data-type="scraper">
+      <div class="card-top"><span class="badge get">GET /scrape</span><span class="status">200 OK</span></div>
+      <h3>JobAgent Scraper</h3>
+      <div class="route">source: jobagent.ch</div>
+      <p>Scrapes job listings with title, company, location, and posting date.</p>
+      <a class="repo-link" href="https://github.com/faisal5001/job-scraper-jobagent.git" target="_blank" rel="noopener">↳ View GitHub Repository</a>
+    </div>
 
-<!-- JobUp Scraper -->
-<div class="card project" data-type="scraper">
-<h3>JobUp Scraper</h3>
-<p>Collects latest job postings from JobUp, including role, location, and company.</p>
-<a href="https://github.com/faisal5001/job-scraper-jobup.git" target="_blank">GitHub</a>
-</div>
+    <div class="card project" data-type="scraper">
+      <div class="card-top"><span class="badge get">GET /scrape</span><span class="status">200 OK</span></div>
+      <h3>JobScout24 Scraper</h3>
+      <div class="route">source: jobscout24.ch</div>
+      <p>Scrapes job listings with structured output for downstream analysis.</p>
+      <a class="repo-link" href="https://github.com/faisal5001/job-scraper-jobscout24.git" target="_blank" rel="noopener">↳ View GitHub Repository</a>
+    </div>
 
-<!-- Tanne Scraper -->
-<div class="card project" data-type="scraper">
-<h3>Tanne Scraper</h3>
-<p>Scraper for Tanne job portal with CSV/JSON output and error handling.</p>
-<a href="https://github.com/faisal5001/job-scraper-tanne.git" target="_blank">GitHub</a>
-</div>
+    <div class="card project" data-type="scraper">
+      <div class="card-top"><span class="badge get">GET /scrape</span><span class="status">200 OK</span></div>
+      <h3>JobUp Scraper</h3>
+      <div class="route">source: jobup.ch</div>
+      <p>Collects the latest postings — role, location, and company — on a schedule.</p>
+      <a class="repo-link" href="https://github.com/faisal5001/job-scraper-jobup.git" target="_blank" rel="noopener">↳ View GitHub Repository</a>
+    </div>
 
-<!-- SchwarzAG Scraper -->
-<div class="card project" data-type="scraper">
-<h3>SchwarzAG Scraper</h3>
-<p>Scrapes job data from SchwarzAG with company, location, and posting date.</p>
-<a href="https://github.com/faisal5001/job-scraper-schwarzag.git" target="_blank">GitHub</a>
-</div>
+    <div class="card project" data-type="scraper">
+      <div class="card-top"><span class="badge get">GET /scrape</span><span class="status">200 OK</span></div>
+      <h3>Tanne Scraper</h3>
+      <div class="route">source: tanne job portal</div>
+      <p>CSV/JSON export with built-in error handling for unreliable pages.</p>
+      <a class="repo-link" href="https://github.com/faisal5001/job-scraper-tanne.git" target="_blank" rel="noopener">↳ View GitHub Repository</a>
+    </div>
 
-<!-- Halter Scraper -->
-<div class="card project" data-type="scraper">
-<h3>Halter Scraper</h3>
-<p>Scrapes job postings from Halter portal with structured output.</p>
-<a href="https://github.com/faisal5001/job-scraper-halter.git" target="_blank">GitHub</a>
-</div>
+    <div class="card project" data-type="scraper">
+      <div class="card-top"><span class="badge get">GET /scrape</span><span class="status">200 OK</span></div>
+      <h3>SchwarzAG Scraper</h3>
+      <div class="route">source: schwarzag.com</div>
+      <p>Extracts company, location, and posting date across listings.</p>
+      <a class="repo-link" href="https://github.com/faisal5001/job-scraper-schwarzag.git" target="_blank" rel="noopener">↳ View GitHub Repository</a>
+    </div>
 
-<!-- Ptindirectory -->
-<div class="card project" data-type="scraper">
-<h3>PTIN Directory Scraper</h3>
-<p>Scrapes tax preparer dataset from PTIN directory for analysis.</p>
-<a href="https://github.com/faisal5001/Ptindirectory.git" target="_blank">GitHub</a>
-</div>
+    <div class="card project" data-type="scraper">
+      <div class="card-top"><span class="badge get">GET /scrape</span><span class="status">200 OK</span></div>
+      <h3>Halter Scraper</h3>
+      <div class="route">source: halter portal</div>
+      <p>Structured extraction of postings from the Halter job portal.</p>
+      <a class="repo-link" href="https://github.com/faisal5001/job-scraper-halter.git" target="_blank" rel="noopener">↳ View GitHub Repository</a>
+    </div>
 
-<!-- Oregon Scraper -->
-<div class="card project" data-type="scraper">
-<h3>Oregon Business Scraper</h3>
-<p>Extracts business listings from Oregon data sources into CSV.</p>
-<a href="https://github.com/faisal5001/Oregon_Scrape.git" target="_blank">GitHub</a>
-</div>
+    <div class="card project" data-type="scraper">
+      <div class="card-top"><span class="badge get">GET /scrape</span><span class="status">200 OK</span></div>
+      <h3>PTIN Directory Scraper</h3>
+      <div class="route">source: IRS PTIN directory</div>
+      <p>Builds a tax-preparer dataset from the public PTIN directory for analysis.</p>
+      <a class="repo-link" href="https://github.com/faisal5001/Ptindirectory.git" target="_blank" rel="noopener">↳ View GitHub Repository</a>
+    </div>
 
-<!-- Insta Scraper -->
-<div class="card project" data-type="scraper">
-<h3>Instagram Scraper</h3>
-<p>Scrapes Instagram posts, profiles, and hashtags for data analysis.</p>
-<a href="https://github.com/faisal5001/Insta_Scraping.git" target="_blank">GitHub</a>
-</div>
+    <div class="card project" data-type="scraper">
+      <div class="card-top"><span class="badge get">GET /scrape</span><span class="status">200 OK</span></div>
+      <h3>Oregon Business Scraper</h3>
+      <div class="route">source: Oregon business registry</div>
+      <p>Extracts business listings into a clean CSV for downstream use.</p>
+      <a class="repo-link" href="https://github.com/faisal5001/Oregon_Scrape.git" target="_blank" rel="noopener">↳ View GitHub Repository</a>
+    </div>
 
-</div>
+    <div class="card project" data-type="scraper">
+      <div class="card-top"><span class="badge get">GET /scrape</span><span class="status">200 OK</span></div>
+      <h3>Instagram Scraper</h3>
+      <div class="route">targets: posts · profiles · hashtags</div>
+      <p>Pulls posts, profiles, and hashtag data for analysis.</p>
+      <a class="repo-link" href="https://github.com/faisal5001/Insta_Scraping.git" target="_blank" rel="noopener">↳ View GitHub Repository</a>
+    </div>
+
+  </div>
 </section>
+</div>
 
+<div class="wrap">
 <section id="contact" class="fade">
-<h2 class="section-title">Contact</h2>
-<p>Email: faisalsattar033@gmail.com</p>
-<p>GitHub: github.com/faisal5001</p>
+  <div class="req-line">
+    <span class="req-method get" style="color:var(--blue); background:rgba(91,157,255,0.12)">POST</span>
+    <span class="req-path">/contact</span>
+  </div>
+
+  <div class="contact-panel">
+    <div class="contact-copy">
+      <p>Have a backend, API, or scraping project in mind? Send a request — I read every one.</p>
+      <div class="contact-links">
+        <a href="mailto:faisalsattar033@gmail.com"><span class="lbl">email</span>faisalsattar033@gmail.com</a>
+        <a href="tel:+923026507075"><span class="lbl">phone</span>+92 302 6507075</a>
+        <a href="https://www.linkedin.com/in/hafiz-faisal-sattar-0a930923a/" target="_blank" rel="noopener"><span class="lbl">linkedin</span>linkedin.com/in/faisal5001</a>
+        <a href="https://github.com/faisal5001/Portfolio" target="_blank" rel="noopener"><span class="lbl">github</span>github.com/faisal5001</a>
+      </div>
+    </div>
+  </div>
 </section>
+</div>
 
 <footer>
-<p>© 2026 Hafiz Faisal Sattar</p>
+  <div class="footer-name">Designed &amp; Developed by Hafiz Faisal Sattar</div>
+  <div class="footer-role">Python Backend &amp; AI Engineer</div>
 </footer>
 
 <script>
-/* FILTER */
-function filter(type,btn){
-document.querySelectorAll('.filters button').forEach(b=>b.classList.remove('active'));
-btn.classList.add('active');
-
-document.querySelectorAll('.project').forEach(p=>{
-if(type==='all'||p.dataset.type===type){
-p.style.display='block';
-}else{
-p.style.display='none';
-}
-});
+function filterProjects(type, btn){
+  document.querySelectorAll('.filters button').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.project').forEach(p=>{
+    const types = p.dataset.type.split(' ');
+    p.style.display = (type === 'all' || types.includes(type)) ? '' : 'none';
+  });
 }
 
-/* ANIMATION */
-const obs=new IntersectionObserver(entries=>{
-entries.forEach(e=>{
-if(e.isIntersecting){
-e.target.classList.add('show');
-}
-});
-});
+const obs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('show'); });
+},{threshold:0.1});
 document.querySelectorAll('.fade').forEach(el=>obs.observe(el));
 </script>
 
